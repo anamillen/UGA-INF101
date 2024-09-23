@@ -17,18 +17,18 @@ C_INF = 2
 
 """---------------LES ENTREES----------------"""
 # saisie et validation des notes pour chaque matière
-# si la note n'est pas valide (hors de l'intervalle [0, 20]), une seconde chance est donnée
+# si la note n'est pas valide (hors de l'intervalle [0, 20]), une autre chance est donnée
 chi = float(input(MSG_ENT+MSG_CH+" : "))
-if not (0<=chi<=20):
+while not (0<=chi<=20):
     chi = float(input(MSG_CHANCE))
 phy = float(input(MSG_ENT+MSG_PH+" : "))
-if not (0<=phy<=20):
+while not (0<=phy<=20):
     phy = float(input(MSG_CHANCE))
 mat = float(input(MSG_ENT+MSG_MA+" : "))
-if not (0<=mat<=20):
+while not (0<=mat<=20):
     mat = float(input(MSG_CHANCE))
 inf = float(input(MSG_ENT+MSG_IN+" : "))
-if not (0<=inf<=20):
+while not (0<=inf<=20):
     inf = float(input(MSG_CHANCE))
 
 """--------------L'ALGORITHME PRINCIPAL----------------"""
