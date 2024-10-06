@@ -4,7 +4,7 @@ import turtle # on importe turtle
 
 # les definitions des fonctions
 def carre(cote_deb, nb_car) :
-    """Trace des carrés imbriqués comme sur la figure ci-contre : le plus grand carré a
+    """Trace des carrés imbriqués  : le plus grand carré a
 pour côté cote_debut, la taille du carré est multipliée par 2/3 à chaque étape,
 et le nombre de carrés tracés est nb_carres
 
@@ -34,5 +34,3 @@ carre(200,10)
 
 
 # programme principal
-
-
