@@ -49,15 +49,13 @@ def resolution(a,b,c):
     delta = b**2-4*a*c
     # on definit le nombre de racines par defaut
     n = 0
-    # on calcule le discriminant
-    delta = b**2-4*a*c
 
     if delta >0:    # si delta est strictement positive on a 2 racines. on les calcule
-        x1 = (-b+sqrt(delta))/2*a
-        x2 = (-b-sqrt(delta))/2*a
+        x1 = (-b+sqrt(delta))/(2*a)
+        x2 = (-b-sqrt(delta))/(2*a)
         n = 2
     elif delta==0:  # si delta == 0 on a 1 racine est on la calcule
-        x1 = (-b)/2*a
+        x1 = (-b)/(2*a)
         n = 1
     # l'affichage de valeurs et leur nombre
     print(MSG_VAL,x1,x2)
@@ -68,12 +66,16 @@ def resolution(a,b,c):
 doctest.testmod()
 
 # programme principal
+
+# l'input de l'util
 MSG_INIT = "Entrez 3 reels a,b,c , coefficients de ax^2+bx+c"
 print(MSG_INIT)
 a = float(input())
 b = float(input())
 c = float(input())
 
+# l'appel de la fonction
+resolution(a,b,c)
 
     
 
