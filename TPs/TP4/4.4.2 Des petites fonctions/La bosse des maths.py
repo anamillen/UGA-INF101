@@ -1,3 +1,5 @@
+# on importe le doctest pour tester les fonctions apres
+import doctest
 
 # les definitions des fonctions
 
@@ -52,8 +54,6 @@ def f(x):
     return y
 
 
-# on importe le doctest pour tester les fonctions apres
-import doctest
 doctest.testmod()
 
 
