@@ -14,3 +14,7 @@ if __name__=="__main__":
     rep=est_premier(9)
     print("9 est premier ?", rep)
     print("5 est premier ?", est_premier(5))
+"""
+Les variables locales de est_premier sont:
+i et a_diviseur
+"""
