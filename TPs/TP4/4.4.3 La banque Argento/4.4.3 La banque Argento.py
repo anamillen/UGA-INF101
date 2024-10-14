@@ -51,6 +51,7 @@ def capMin(nb_annees,but):
     1312.7655913025512
     """
     i = 0
+    # la boucle pour trouver le capital minimum en reversant l'algortihme principal
     while i<nb_annees:
         but = (but + 11) / 1.05
         i+=1
@@ -77,15 +78,19 @@ def dureeMin(cap_init,but):
     >>> dureeMin(100, 0)
     0
     """
-    DUR = 1
     cap = cap_init
-    n = 0
+    n = 0     # valeur renvoiee par defaut (si but>=cap)
+
+    # tant que le capital est inférieur au but et diminue pas avec chaque pas
     while cap<but and cap_init<=cap:
-        cap = capital(DUR,cap)
+        cap = capital(1,cap)  # on calcule le capital nouveau
         n+=1
     
+    # si le capital est tombe en dessous du capital initial alors
     if cap_init>cap:
         n=-1
+
+        
     return n
 
 
