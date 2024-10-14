@@ -171,24 +171,7 @@ def irreductible(num,den):
     return pgcd(num, den) == 1
 
 
-def nombres_par_pgcd_et_ppcm(pgcd,ppcm):
-    """Reçoit 2 entiers pgcd et ppcm, et affiche tous les couples
-    d’entiers a et b dans l’ordre croissant dont ces nombres sont le pgcd et le ppcm
-
-    """
-    prod = pgcd*ppcm
-    a = pgcd
-    while a<=prod%2:
-        if prod%a==0:
-            print(a, prod/a)
-        a+=1
-
-
 
 
 # programme principal
-
-cd = int(input())
-cm = int(input())
-
-nombres_par_pgcd_et_ppcm(cd,cm)
+doctest.testmod()
