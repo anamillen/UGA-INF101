@@ -14,10 +14,11 @@ def capital(nba,deb):
     87.7
     """
     # definitions des constantes
-    INT = 1.05
-    COUT = 11
+    INT = 1.05   # taux d'interet
+    COUT = 11    # coût annuel
     # l'initialisation d'un decompteur pour gerer la boucle suivante
     i = 0 
+    # boucle sur les années pour accumuler les intérêts et soustraire le coût
     while i<nba:
         deb=deb*INT-COUT
         i+=1
@@ -36,10 +37,7 @@ def gagne(nba,deb):
     False
 
     """
-    res = False
-    if capital(nba,deb)>deb:
-        res = True
-    return res
+    return capital(nba,deb)>deb
 
 def capMin(nb_annees,but):
     """
@@ -56,9 +54,9 @@ def capMin(nb_annees,but):
     while i<nb_annees:
         but = (but + 11) / 1.05
         i+=1
-    return capital
+    return but
 
-def dureeMin(capital,but):
+def dureeMin(cap_init,but):
     """
     Calcule la durée minimum de placement avec
     un capital de départ donné pour atteindre le capital but souhaité.
@@ -68,14 +66,25 @@ def dureeMin(capital,but):
     -1
     >>> dureeMin(300,1000)
     47
+    >>> dureeMin(500, 500)
+    0
+    >>> dureeMin(500, 400)
+    0
+    >>> dureeMin(1000, 2000)
+    17
+    >>> dureeMin(0, 1000)
+    -1
+    >>> dureeMin(100, 0)
+    0
     """
     DUR = 1
-    cap_init = capital
+    cap = cap_init
     n = 0
-    while capital<but and cap_init<capital:
-        capital = capital(DUR,capital)
+    while cap<but and cap_init<=cap:
+        cap = capital(DUR,cap)
         n+=1
-    if cap_init>capital:
+    
+    if cap_init>cap:
         n=-1
     return n
 
