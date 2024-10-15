@@ -54,10 +54,16 @@ def texte_chiffre(texte):
     """
     res = ""
     DECAL = 3
-    for mot in texte.split():
-        res+=" "+chiffre_de_cesar(mot, DECAL)
-    return res[1:]
-
+    i = 0     # le drapeau pour detecter le premier mot du texte et 
+    # chager l'affichage
+    # on parcourt chaque mot dans notre txt
+    for mot in texte.split():   
+        if i!=0:  
+            res+=" "+chiffre_de_cesar(mot, DECAL)
+        else: # ici on evite l'espace innecessaire apres le dernier mot
+            res+=chiffre_de_cesar(mot, DECAL)
+            i = 1     # on cnahge la valeur du drapeau pour continuer en affichant des mots de maniere necessaire
+    return res
 
         
 
