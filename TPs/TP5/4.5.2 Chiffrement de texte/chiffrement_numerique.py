@@ -77,6 +77,3 @@ def chiffre_texte(txt):
 
 # programme principal    
 doctest.testmod()
-
-MSG_CHOIX = "Quel chiffre voulez-vous utiliser ?"
-MCG_OPT = "(tapez a pour le chiffre de Cesar et b pour le chiffre numerique)"
