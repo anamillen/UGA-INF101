@@ -2,7 +2,7 @@
 import doctest
 
 # definitions de fonctions
-def decalage(ltr, DECAL):
+def decalage(ltr, DECAL = 3):
     """Decale une lettre par DECAL lettres
 
     Exemples :
@@ -20,7 +20,7 @@ def decalage(ltr, DECAL):
         nov_ordre = nov_ordre+PREMIER-DERNIER
     return chr(nov_ordre)
 
-def chiffre_de_cesar(mot, DECAL):
+def chiffre_de_cesar(mot, DECAL = 3):
     """
     Reçoit un mot en majuscules, et le renvoie chiffré en décalant chaque lettre
     de 3 positions (le ’A’ devient ’D’, le ’B’ devient ’E’, le ’Z’ devient ’C’, etc).
@@ -38,7 +38,7 @@ def chiffre_de_cesar(mot, DECAL):
     # on parcourt toutes les lettres de notre mot
     for ltr in mot:
         if ltr.isalpha():
-            res+=decalage(ltr,DECAL)
+            res+=decalage(ltr)
         else:    # si le caractere est bien une signe de ponctiation alors
             res+=ltr
     return res
@@ -53,15 +53,14 @@ def texte_chiffre(texte):
     'KL!!!'
     """
     res = ""
-    DECAL = 3
     i = 0     # le drapeau pour detecter le premier mot du texte et 
     # chager l'affichage
     # on parcourt chaque mot dans notre txt
     for mot in texte.split():   
         if i!=0:  
-            res+=" "+chiffre_de_cesar(mot, DECAL)
+            res+=" "+chiffre_de_cesar(mot)
         else: # ici on evite l'espace innecessaire apres le dernier mot
-            res+=chiffre_de_cesar(mot, DECAL)
+            res+=chiffre_de_cesar(mot)
             i = 1     # on cnahge la valeur du drapeau pour continuer en affichant des mots de maniere necessaire
     return res
 
