@@ -21,7 +21,7 @@ MSG_ERR = "Il vous restent d'erreurs :"
 mot_a_deviner = input(MSG_INIT)
 
 
-
+"""
 while not a_gagne() and n_ess()>0:
     print(MSG_DEVINE, affichage_mot())
     print(MSG_ERR, n_ess)
@@ -29,4 +29,4 @@ while not a_gagne() and n_ess()>0:
     if lettre_existe():
         affichage_mot(ltr)
         
-
+"""
