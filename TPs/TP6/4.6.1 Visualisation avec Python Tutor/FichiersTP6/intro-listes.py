@@ -37,5 +37,4 @@ maliste[5] = 12
 print(maliste)
 maliste.pop()
 maliste[5] = 12    # Affiche Index error
-
 maliste0[5] =12    # Affiche Name error
