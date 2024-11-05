@@ -1,6 +1,15 @@
-def proche_zero(l):
-    # enlever la ligne ci-dessous et ecrivez a la place le code de la fonction
-    return None
+def proche_zero(li):
+    if len(li)<1:
+        temp = 0
+    else:  # s'il la liste n'est pas vide alors
+        temp = li[0]
+        for curr in li:
+            if abs(curr)<abs(temp): 
+                temp = curr
+            elif abs(curr) == abs(temp):
+                # Pour renvoyer la temperature positive
+                temp = max(curr,temp)
+    return temp
 
 
 # fonction pour tester proche_zero, ne pas modifier

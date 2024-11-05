@@ -112,7 +112,6 @@ def minimum3(li):
 
 
 
-
 # programme principal
 doctest.testmod()
 
