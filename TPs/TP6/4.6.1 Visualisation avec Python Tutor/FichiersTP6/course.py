@@ -1,7 +1,30 @@
-def plus_proches (liste):
-    # enlever la ligne ci-dessous et ecrivez a la place le code de la fonction
-    return None
+# definitions de fonctions
 
+def plus_proches(li):
+    """Etant donnée une liste des forces, 
+    identifie les forces les plus proches et 
+    renvoie la différence entre ces deux forces 
+    (entier positif ou nul).
+    
+    Exemples :
+    >>> plus_proches([2,3,15])
+    1
+    >>> plus_proches([34,23,12,12])
+    0
+    >>> plus_proches([12,13,145])
+    1
+    >>> plus_proches([28,24,22])
+    2
+    """
+    min_diff = float("inf")
+    long = len(li)
+    for i in range(long):
+        for j in range(long):
+            if i!=j:
+                diff = abs(li[i]- li[j])
+                if diff < min_diff:
+                    min_diff = diff
+    return min_diff
 
 # programme principal, pour tester la fonction plus_proches
 
