@@ -1,15 +1,17 @@
 # on importe les modules necessaires
-import doctest
 import random
 
-# definitions de fonctions
+# definitions de fonctions 
+def initialisation(N):
+    """Initialise l'etat initial"""
+    return ["C"]+["I"]*(N-1)
 
 def choix1(N):
-    """Choisit l'indice d'une personne pour la rencontre"""
+    """Choisit l'indice d'une personne pour la rencontre et le renvoie"""
     return random.randint(0,N-1)
 
 def tirage(N):
-    """Renvoie les nombres de 2 choisis aletoirement pour une rencontre"""
+    """Renvoie les indices de 2 personnes choisies aletoirement pour une rencontre"""
     i1 = choix1(N)
     i2 = choix1(N)
     while i1==i2:
@@ -17,7 +19,8 @@ def tirage(N):
     return i1,i2
 
 def rencontre(p1,p2):
-    """Simulation d'une rencontre entre p1 et p2"""
+    """Simulation d'une rencontre entre p1 et p2.
+    Renvoie les valeurs obtenues par p1 et p2 apres la rencontre"""
     pp = [p1,p2]
     if c_present(pp):
         if p1==p2:
@@ -29,51 +32,41 @@ def rencontre(p1,p2):
                 p1,p2 = "C","C"
     return p1, p2
 
-def change(N, l1, l2):
-    """Renvoie les indices de ces elements qui ont change"""
+def change_indices(N, l1, l2):
+    """Renvoie les indices de ces elements qui ont change stockes dans une liste"""
     res = []
     for i in range(N):
         if l1[i]!=l2[i]:
             res.append(i)
     return res
 
-
 def c_present(li):
     """Verifie s'il y en a des personnes connaissantes la nouvelle"""
     return "C" in li
 
-def jour(N, per_avant):
-    """Affiche les changements de chaque jour"""
-    n1, n2 = tirage(N)
-    print(str(n1)+",",n2,"\t\t", per_avant[n1], per_avant[n2], end = "\t")
+def modification(n1, n2, per_avant):
+    """Renvoie une liste deja modifiee apres la rencontre"""
     per_apres = list(per_avant)
-    
-    per_apres[n1],
     per_apres[n1], per_apres[n2] = rencontre(per_avant[n1], per_avant[n2])
-    changement = change(N, per_avant, per_apres)
-
-    for i in range(N):
-        if i in changement:
-            print(str(per_apres[i]).rjust(0), end="     ")
-        else:
-            print("-".rjust(0), end="     ")
-
     return per_apres
 
+def jour(N, n1, n2, per_avant):
+    """Fait les changements de chaque jour"""
+    per_apres = modification(n1,n2,per_avant)
+    changement = change_indices(N, per_avant, per_apres)
+    return per_apres, changement
 
+def paire_choisie_affiche(n1,n2, personnes):
+    """Affiche les nombres de personnes choisises et leurs natures"""
+    print(str(n1)+",",n2,"\t\t", personnes[n1], personnes[n2], end = "\t")
 
-
-def simulation(N):
-    personnes = ["C"]+["I"]*(N-1)
-    jour_decompt = 0
-    while c_present(personnes):
-        print(str(jour_decompt).rjust(3), end="\t  ")
-        personnes = jour(N, personnes)
-        jour_decompt+=1
-        print()
-    # a partir d'ici l n'y a pas de personnes "C" parmis toutes les personnes
-    return
-
+def changement_affiche(N,changement, personnes):
+    """Affiche les changements"""
+    for i in range(N):
+        if i in changement:
+            print(str(personnes[i]).rjust(0), end="     ")
+        else:
+            print("-".rjust(0), end="     ")
 
 def header(N):
     """Affiche le 'chapeau' de l'affichage"""
@@ -88,9 +81,31 @@ def header(N):
         print("st."+str(i),end="  ")
     print()
 
+def msg(personnes):
+    """Affiche les derniers messages qui comptent combien il y a de muetes et de ignorants"""
+    ignor = personnes.count("I")
+    print("Nombre d'ignorants :",ignor)
+    print("Nombre de muets :",len(personnes)-ignor)
 
-N = 5
+def simulation_en_detail(N):
+    # initialisation 
+    personnes = initialisation(N)
+    jour_decompt = 1
+    while c_present(personnes):
+        print(str(jour_decompt).rjust(3), end="\t  ")
+        n1, n2 = tirage(N)
+        paire_choisie_affiche(n1, n2, personnes)
+        personnes, changement = jour(N, n1,n2, personnes)
+        changement_affiche(N, changement, personnes)
+        jour_decompt+=1
+        print()
+    # a partir d'ici l n'y a pas de personnes "C" parmis toutes les personnes
+    msg(personnes)
 
+
+
+# programme principal pour tester
+N = 3
 header(N)
-simulation(N)
+simulation_en_detail(N)
 
