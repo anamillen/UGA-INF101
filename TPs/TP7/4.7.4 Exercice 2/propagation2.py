@@ -97,25 +97,21 @@ def msg(personnes):
     print("Nombre d'ignorants :",ignor)
     print("Nombre de muets :",len(personnes)-ignor)
 
-def simulation_en_detail(N):
+def simulation(N):
     # initialisation 
     personnes = initialisation(N)
     jour_decompt = 1
     while c_present(personnes):
-        print(str(jour_decompt).rjust(3), end="\t  ")
         n1, n2 = tirage(N)
-        paire_choisie_affiche(n1, n2, personnes)
         personnes, changement = jour(N, n1,n2, personnes)
-        changement_affiche(N, changement, personnes)
         jour_decompt+=1
-        print()
     # a partir d'ici l n'y a pas de personnes "C" parmis toutes les personnes
-    msg(personnes)
+    print("La propagation a dure",jour_decompt,"jours")
+    print("Le nombre d'ignorants restant est :", compter_ignor(personnes))
 
 
 
 # programme principal pour tester
-N = 3
-header(N)
-simulation_en_detail(N)
+N = 10
+simulation(N)
 
