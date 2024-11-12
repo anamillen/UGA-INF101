@@ -14,7 +14,7 @@ def taille_de_mots(txt):
     >>> taille_de_mots("I'm tired")
     [3, 5]
     """
-    # l'inilisation des constantes et variables
+    # l'initialisation des constantes et variables
     res = []
     txt_liste = txt.split()
     for mot in txt_liste:
