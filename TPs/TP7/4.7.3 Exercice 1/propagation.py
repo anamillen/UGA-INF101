@@ -6,16 +6,16 @@ def initialisation(N):
     """Initialise l'etat initial"""
     return ["C"]+["I"]*(N-1)
 
-def choix1(N):
+def choix_personne(N):
     """Choisit l'indice d'une personne pour la rencontre et le renvoie"""
     return random.randint(0,N-1)
 
 def tirage(N):
     """Renvoie les indices de 2 personnes choisies aletoirement pour une rencontre"""
-    i1 = choix1(N)
-    i2 = choix1(N)
+    i1 = choix_personne(N)
+    i2 = choix_personne(N)
     while i1==i2:
-        i2 = choix1(N)
+        i2 = choix_personne(N)
     return i1,i2
 
 def rencontre(p1,p2):
