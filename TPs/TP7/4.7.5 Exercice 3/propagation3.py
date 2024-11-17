@@ -60,7 +60,7 @@ def afficher_etat(jour, n1, n2, personnes_avant, personnes_apres):
     print()
 
 def simulation_globale(N):
-    """Simule la propagation d'une nouvelle dans une population en affichant les étapes."""
+    """Simule la propagation d'une nouvelle dans une population en affichant les resultats."""
     personnes = initialisation(N)
     jour_decompt = 1
     while c_present(personnes):     # Continue tant qu'il reste des personnes avec le statut 'C'
