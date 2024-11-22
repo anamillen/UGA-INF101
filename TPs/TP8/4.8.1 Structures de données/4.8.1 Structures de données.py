@@ -22,12 +22,12 @@ def placerMines(grille, X, mine = 1):
     N = len(grille)
     M = len(grille[0])
     for _ in range(X):
-        line = randint(N-1)
-        col = randint(M-1)
+        line = randint(0,N-1)
+        col = randint(0, M-1)
         while grille[line][col]==mine:
-            line = randint(N-1)
-            col = randint(M-1)
-        grille[line][col]==mine
+            line = randint(0,N-1)
+            col = randint(0,M-1)
+        grille[line][col]=mine
 
 # programme principal pour tester
 
@@ -37,6 +37,7 @@ X = int(input("Numero de mines à placer : "))
 
 grille = creerGrille(N,M)
 placerMines(grille, X)
+print(grille)
 
 
 
