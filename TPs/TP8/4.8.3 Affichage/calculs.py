@@ -1,8 +1,32 @@
 # on importe les modules necesssaires
 import doctest
 
-
 # definitions de fonctions
+def creerGrille(N,M, v = 0):
+    """Reçoit en paramètres les entiers N et M, et un paramètre optionnel v (par défaut 0) 
+    représentant la valeur d’initialisation de toutes les cellules ; 
+    crée une grille à N lignes et M colonnes (donc une liste de N listes de M entiers), 
+    ne contenant que des valeurs v (0 par défaut) ; et renvoie cette liste."""
+    ligne = [0]*M
+    grille = []
+    for _ in range(N):
+        grille.append(list(ligne))
+    return grille
+
+def placerMines(grille, positionMines, avec_mine = '*'):
+    """Place les mines sur la grille aux positions stockees dans positionMines"""
+    for coord_pair in positionMines:
+        ind_lin = coord_pair[0]
+        ind_col = coord_pair[1]
+        grille[ind_lin][ind_col] = avec_mine
+
+def grillePourAffichage(dimensions, positionMines, avec_mine = "*", sans_mine = "-"):
+    """Cree la grille qui est adaptee a l'affichage"""
+    N_LINS = dimensions[0]
+    N_COLS = dimensions[1]
+    grille = creerGrille(N_LINS, N_COLS, sans_mine)
+    placerMines(grille, positionMines, avec_mine)
+    return grille
 
 def testMine(grille, i, j, mine = 1):
     """Reçoit la grille des positions des mines, et 2 coordonnées
