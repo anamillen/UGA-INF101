@@ -27,6 +27,7 @@ def placerMines(grille, X, mine = 1):
         while grille[line][col]==mine:
             line = randint(0,N-1)
             col = randint(0,M-1)
+        # a partir d'ici la case choisie n'a pas de mine 
         grille[line][col]=mine
 
 # programme principal pour tester
