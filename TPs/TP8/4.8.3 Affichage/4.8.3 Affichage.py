@@ -42,8 +42,8 @@ def afficheJeu(dimensions, positionMines, casesDevoilees, non_decouvert = "?", a
                     print(avec_mine, end=" ")
                 else:   # si la case courante ne contient pas une mine alors
 
-                    """Completer avec un algorithme qui affichera le nombre 
-                    de mines voisines de cette case"""
+                    # TODO : Completer avec un algorithme qui affichera le nombre 
+                    #de mines voisines de cette case
                     
                     print()
         print()
